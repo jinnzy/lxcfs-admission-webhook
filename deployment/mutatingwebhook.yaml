@@ -1,4 +1,4 @@
-apiVersion: admissionregistration.k8s.io/v1beta1
+apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
   name: mutating-lxcfs-admission-webhook-cfg
@@ -20,3 +20,7 @@ webhooks:
     namespaceSelector:
       matchLabels:
         lxcfs-admission-webhook: enabled
+    # Declare the admissionReviewVersions that the webhook supports.
+    admissionReviewVersions: ["v1", "v1beta1"]
+    # Describes whether the webhook has external side effects (calls / dependencies to external systems).
+    sideEffects: None
