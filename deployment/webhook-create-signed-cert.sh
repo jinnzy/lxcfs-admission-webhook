@@ -83,11 +83,12 @@ kubectl delete csr ${csrName} 2>/dev/null || true
 
 # create  server cert/key CSR and  send to k8s API
 cat <<EOF | kubectl create -f -
-apiVersion: certificates.k8s.io/v1beta1
+apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
   name: ${csrName}
 spec:
+  signerName: kubernetes.io/kube-apiserver-client
   groups:
   - system:authenticated
   request: $(cat ${tmpdir}/server.csr | base64 | tr -d '\n')
@@ -109,7 +110,7 @@ done
 kubectl certificate approve ${csrName}
 # verify certificate has been signed
 for x in $(seq 10); do
-    serverCert=$(kubectl get csr ${csrName} -o jsonpath='{.status.certificate}')
+    serverCert=$(kubectl get csr ${csrName} -o jsonpath='{.spec.request}')
     if [[ ${serverCert} != '' ]]; then
         break
     fi
@@ -126,5 +127,5 @@ echo ${serverCert} | openssl base64 -d -A -out ${tmpdir}/server-cert.pem
 kubectl create secret generic ${secret} \
         --from-file=key.pem=${tmpdir}/server-key.pem \
         --from-file=cert.pem=${tmpdir}/server-cert.pem \
-        --dry-run -o yaml |
+        --dry-run=client -o yaml |
     kubectl -n ${namespace} apply -f -
