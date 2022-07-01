@@ -15,6 +15,18 @@ admissionregistration.k8s.io/v1beta1
 
 In addition, the `MutatingAdmissionWebhook` and `ValidatingAdmissionWebhook` admission controllers should be added and listed in the correct order in the admission-control flag of kube-apiserver.
 
+Ubuntu:
+```shell
+apt install libfuse-dev
+```
+
+If it is not installed, it will report an error
+```shell
+ln: failed to create symbolic link '/usr/lib64/libfuse.so.2': File exists
+ln: failed to create symbolic link '/usr/lib64/libulockmgr.so.1': File exists
+/usr/local/bin/lxcfs: error while loading shared libraries: libfuse.so.2: cannot open shared object file: No such file or directory
+```
+
 ## Build
 
 1. Setup dep
