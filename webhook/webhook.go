@@ -173,6 +173,7 @@ func main(cmd *cobra.Command, args []string) {
 		Addr:      fmt.Sprintf(":%d", port),
 		TLSConfig: configTLS(config),
 	}
+
 	err := server.ListenAndServeTLS("", "")
 	if err != nil {
 		panic(err)

@@ -16,14 +16,12 @@ spec:
     spec:
       containers:
         - name: lxcfs-admission-webhook
-          image: registry.cn-hangzhou.aliyuncs.com/denverdino/lxcfs-admission-webhook:v1
+          image: lxcfs-admission-webhook:v1  # todo: build image
           imagePullPolicy: IfNotPresent
           args:
-            - -tlsCertFile=/etc/webhook/certs/server.crt
-            - -tlsKeyFile=/etc/webhook/certs/server.key
-            - -alsologtostderr
-            - -v=4
-            - 2>&1
+            - webhook
+            - --tls-cert-file /etc/webhook/certs/tls.key
+            - --tls-private-key-file /etc/webhook/certs/tls.key
           volumeMounts:
             - name: webhook-certs
               mountPath: /etc/webhook/certs
