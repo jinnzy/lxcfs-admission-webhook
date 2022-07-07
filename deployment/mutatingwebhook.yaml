@@ -8,7 +8,7 @@ webhooks:
   - name: mutating.lxcfs-admission-webhook.aliyun.com
     clientConfig:
       service:
-        name: lxcfs-admission-webhook-svc
+        name: lxcfs-admission-webhook
         namespace: default
         path: "/mutate"
       caBundle: ${CA_BUNDLE}

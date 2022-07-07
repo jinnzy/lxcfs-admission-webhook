@@ -19,8 +19,8 @@ spec:
           image: registry.cn-hangzhou.aliyuncs.com/denverdino/lxcfs-admission-webhook:v1
           imagePullPolicy: IfNotPresent
           args:
-            - -tlsCertFile=/etc/webhook/certs/cert.pem
-            - -tlsKeyFile=/etc/webhook/certs/key.pem
+            - -tlsCertFile=/etc/webhook/certs/server.crt
+            - -tlsKeyFile=/etc/webhook/certs/server.key
             - -alsologtostderr
             - -v=4
             - 2>&1
@@ -31,4 +31,4 @@ spec:
       volumes:
         - name: webhook-certs
           secret:
-            secretName: lxcfs-admission-webhook-certs
+            secretName: lxcfs-admission-webhook-tls

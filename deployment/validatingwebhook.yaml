@@ -8,7 +8,7 @@ webhooks:
   - name: validation.lxcfs-admission-webhook.aliyun.com
     clientConfig:
       service:
-        name: lxcfs-admission-webhook-svc
+        name: lxcfs-admission-webhook
         namespace: default
         path: "/validate"
       caBundle: ${CA_BUNDLE}

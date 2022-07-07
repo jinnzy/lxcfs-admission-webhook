@@ -1,13 +1,13 @@
 #!/bin/bash
 
+CA_BUNDLE=$1
+
 ROOT=$(cd $(dirname $0)/../../; pwd)
 
 set -o errexit
 set -o nounset
 set -o pipefail
 
-
-export CA_BUNDLE=$(kubectl config view --raw --flatten --minify -o jsonpath='{.clusters[].cluster.certificate-authority-data}')
 
 if command -v envsubst >/dev/null 2>&1; then
     envsubst
