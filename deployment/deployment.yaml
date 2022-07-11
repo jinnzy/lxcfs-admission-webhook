@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - webhook
-            - --tls-cert-file /etc/webhook/certs/tls.key
+            - --tls-cert-file /etc/webhook/certs/tls.crt
             - --tls-private-key-file /etc/webhook/certs/tls.key
           volumeMounts:
             - name: webhook-certs

@@ -10,7 +10,7 @@ webhooks:
       service:
         name: lxcfs-admission-webhook
         namespace: default
-        path: "/mutate"
+        path: "/mutating-pods"
       caBundle: ${CA_BUNDLE}
     rules:
       - operations: [ "CREATE" ]

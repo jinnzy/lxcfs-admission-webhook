@@ -174,7 +174,7 @@ func applyPodPatch(ar v1.AdmissionReview,
 	shouldPatchPod func(*corev1.Pod) bool,
 	patch func(pod *corev1.Pod) ([]byte, error)) *v1.AdmissionResponse {
 
-	klog.V(2).Info("mutating pods")
+	klog.Info("mutating pods")
 	podResource := metav1.GroupVersionResource{Group: "", Version: "v1", Resource: "pods"}
 	if ar.Request.Resource != podResource {
 		klog.Errorf("expect resource to be %s", podResource)

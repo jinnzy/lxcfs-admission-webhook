@@ -102,7 +102,7 @@ func serve(w http.ResponseWriter, r *http.Request, admit admitHandler) {
 		return
 	}
 
-	klog.V(2).Info(fmt.Sprintf("handling request: %s", body))
+	klog.Infof("handling request: %s", body)
 
 	deserializer := codecs.UniversalDeserializer()
 	obj, gvk, err := deserializer.Decode(body, nil, nil)
@@ -144,7 +144,7 @@ func serve(w http.ResponseWriter, r *http.Request, admit admitHandler) {
 		return
 	}
 
-	klog.V(2).Info(fmt.Sprintf("sending response: %v", responseObj))
+	klog.Info(fmt.Sprintf("sending response: %v", responseObj))
 	respBytes, err := json.Marshal(responseObj)
 	if err != nil {
 		klog.Error(err)
