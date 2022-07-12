@@ -24,26 +24,26 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-        - name: cgroup
-          mountPath: /sys/fs/cgroup
-        - name: lxcfs
-          mountPath: /var/lib/lxcfs
-          mountPropagation: Bidirectional
-        - name: usr-local
-          mountPath: /usr/local
-        - name: usr-lib64
-          mountPath: /usr/lib64
+          - name: cgroup
+            mountPath: /sys/fs/cgroup
+          - name: lxcfs
+            mountPath: /var/lib/lxcfs
+            mountPropagation: Bidirectional
+          - name: usr-local
+            mountPath: /usr/local
+          - name: usr-lib64
+            mountPath: /usr/lib64
       volumes:
-      - name: cgroup
-        hostPath:
-          path: /sys/fs/cgroup
-      - name: usr-local
-        hostPath:
-          path: /usr/local
-      - name: usr-lib64
-        hostPath:
-          path: /usr/lib64
-      - name: lxcfs
-        hostPath:
-          path: /var/lib/lxcfs
-          type: DirectoryOrCreate
+        - name: cgroup
+          hostPath:
+            path: /sys/fs/cgroup
+        - name: usr-local
+          hostPath:
+            path: /usr/local
+        - name: usr-lib64
+          hostPath:
+            path: /usr/lib64
+        - name: lxcfs
+          hostPath:
+            path: /var/lib/lxcfs
+            type: DirectoryOrCreate

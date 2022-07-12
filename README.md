@@ -119,3 +119,4 @@ If you want to know webhooks in depth, please check [it](https://aliyun.com/blog
 https://github.com/slackhq/simple-kubernetes-webhook
 https://github.com/liggitt/kubernetes/blob/7e8277284aa733636ba7b5af4d03168b6e8bdb46/staging/src/k8s.io/pod-security-admission/webhook/Makefile
 https://github.com/kubernetes/kubernetes/blob/master/test/images/agnhost/webhook/pods.go
+https://aisensiy.me/lxcfs-in-kubernetes
